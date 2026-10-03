@@ -1,7 +1,7 @@
-# RESQ-AI — AI-Powered Rescue Agency Locator & Emergency Coordination Platform
+# RALCA  -AI — AI-Powered Rescue Agency Locator & Emergency Coordination Platform
 
 > **"One SOS. One AI. One Fastest Safe Response."**  
-> *Built for Hack Devengers 2.0 — Theme: AI for Everyday Life*
+>  AI for Everyday Life*
 
 ---
 
@@ -162,4 +162,4 @@ For judges watching a live walkthrough:
 
 ## 🛡️ Hackathon Disclaimer
 
-*RESQ-AI is a decision-support prototype created for Hack Devengers 2.0. All hazard zones, agency stations, and casualty events displayed in demo mode are synthetic simulated data. The system is designed to augment and assist emergency coordinators, not replace official certified municipal dispatch networks without formal integration.*
+*RALCA is a decision-support prototype created for Hack Devengers 2.0. All hazard zones, agency stations, and casualty events displayed in demo mode are synthetic simulated data. The system is designed to augment and assist emergency coordinators, not replace official certified municipal dispatch networks without formal integration.*
