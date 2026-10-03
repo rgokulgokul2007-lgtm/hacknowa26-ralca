@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Hackathon decision-support rule: open read/write for verified demo client
+    match /incidents/{incidentId} {
+      allow read, write: if true;
+    }
+    match /agencies/{agencyId} {
+      allow read, write: if true;
+    }
+    match /notifications/{notificationId} {
+      allow read, write: if true;
+    }
+    match /resources/{resourceId} {
+      allow read, write: if true;
+    }
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
