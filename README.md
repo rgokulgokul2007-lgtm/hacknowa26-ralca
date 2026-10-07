@@ -5,7 +5,6 @@
 **HackNowa Global Hackathon 2026** | **Track:** AI for Everyday Life  
 **Live Demo:** [chimerical-pavlova-5c3493.netlify.app](https://chimerical-pavlova-5c3493.netlify.app/)  
 **Demo Video:** [Watch Walkthrough](https://drive.google.com/file/d/1rDUJDflSiCdU2cgAMTE-W8FeN9jwqiqh/view?usp=drivesdk)  
-**Repository:** [github.com/rgokulgokul2007-lgtm/hacknowa26-ralca](https://github.com/rgokulgokul2007-lgtm/hacknowa26-ralca)
 
 ---
 
