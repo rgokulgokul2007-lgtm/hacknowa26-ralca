@@ -1,165 +1,57 @@
-# RALCA  -AI — AI-Powered Rescue Agency Locator & Emergency Coordination Platform
+# 🚨 RALCA-AI: Next-Gen Emergency Dispatch & Hazard-Aware Coordination
 
-> **"One SOS. One AI. One Fastest Safe Response."**  
->  AI for Everyday Life*
+> *"When seconds decide outcomes, emergency dispatch shouldn't rely on guesswork, busy signals, or blind routing."*
 
----
-
-## 🚨 Problem Statement
-
-In life-or-death emergencies, traditional 911/108/112 dispatch infrastructure suffers from severe bottlenecks:
-1. **Frantic & Ambiguous Distress Signals**: Panicked callers struggle to describe symptoms or trauma accurately under adrenaline.
-2. **Slow Manual Triage**: Human dispatch operators must cross-examine callers before categorizing severity.
-3. **Siloed Agency Fleets**: Medical ambulances, fire engines, police interceptors, and disaster task forces operate in isolated dispatch databases.
-4. **Blind Navigation**: Emergency vehicles are routed onto standard navigation paths that ignore dynamic secondary hazards (flash floods, smoke plumes, collapsed overpasses).
-5. **Civilian Anxiety**: Once an emergency call ends, the victim has zero real-time visibility into whether aid is truly coming.
-
-**RESQ-AI** eliminates these friction points by combining **NLP Emergency Triage**, **Geospatial Multi-Factor Agency Matching**, **Hazard-Aware Safe Street Routing**, and **Real-Time Synchronized Dashboards** into a single cohesive network.
+**HackNowa Global Hackathon 2026** | **Track:** AI for Everyday Life  
+**Live Demo:** [chimerical-pavlova-5c3493.netlify.app](https://chimerical-pavlova-5c3493.netlify.app/)  
+**Demo Video:** [Watch Walkthrough](https://drive.google.com/file/d/1rDUJDflSiCdU2cgAMTE-W8FeN9jwqiqh/view?usp=drivesdk)  
+**Repository:** [github.com/rgokulgokul2007-lgtm/hacknowa26-ralca](https://github.com/rgokulgokul2007-lgtm/hacknowa26-ralca)
 
 ---
 
-## 💡 The Solution
+## ⚡ The Reality of Emergency Response
+
+Traditional municipal dispatch systems (911 / 112 / 108) were built for voice calls, not dynamic crisis telemetry. During catastrophic events, dispatch centers face predictable failure points:
+
+* **Adrenaline-distorted reporting:** Panicked callers struggle to describe symptoms, exact locations, or environmental threats coherently.
+* **Manual triage friction:** Dispatchers spend critical minutes interrogating callers to determine whether an ambulance or heavy rescue is required.
+* **Siloed fleets:** Fire, medical, and police units operate on separate dashboards, leading to fragmented deployments.
+* **Blind navigation:** Standard GPS routes emergency units directly toward hazards—flooded underpasses, toxic plumes, or debris fields.
+* **The "black box" wait:** Once a call ends, victims endure terrifying uncertainty with zero visibility into responder arrival.
+
+**RALCA-AI** replaces this fragmented chain with a real-time, sensor-aware coordination engine connecting distressed civilians, AI triage agents, and field commanders on a single reactive pipeline.
+
+---
+
+## 💡 System Architecture
 
 ```mermaid
 flowchart TD
-    Civilian([Distressed Civilian / Bystander]) -->|Submits SOS + Location| SOSPortal[Civilian SOS Module]
-    SOSPortal -->|Emergency Text & GPS| AIEngine[AI Triage & Severity Classifier]
-    AIEngine -->|Urgency + Priority Score 0-100| Backend[(Cloud Firestore / Realtime Bus)]
+    Civilian([Distressed Civilian / Bystander]) -->|SOS + Geolocation| SOSPortal[Civilian SOS Interface]
+    SOSPortal -->|Telemetry & Natural Language| AIEngine[Dual-Layer AI Triage Engine]
+    AIEngine -->|Urgency Score & Incident Tags| StateBus[(Firestore / Reactive Event Bus)]
     
-    Backend -->|Real-Time Push| CommandCenter[Live Command Center]
-    CommandCenter -->|Fetch Candidate Stations| GeoMatcher[Multi-Factor Geospatial Matcher]
-    GeoMatcher -->|Distance + Readiness + Specialty| RoutingEngine[Routing & Hazard Avoidance Engine]
-    RoutingEngine -->|OSRM Street Path + Hazard Bypass| LiveMap[Interactive Leaflet Radar Map]
+    StateBus -->|Instant Push| CommandCenter[Live Tactical Command Center]
+    CommandCenter -->|Fetch Unit Readiness| GeoMatcher[Multi-Factor Agency Matcher]
+    GeoMatcher -->|Distance + Specialty + Fleet Status| RoutingEngine[Hazard-Aware Routing Engine]
+    RoutingEngine -->|OSRM Geometry + Hazard Polygon Check| TacticalMap[Interactive Leaflet Radar]
     
-    AgencyCommander([Rescue Agency Commander]) -->|Accept / Dispatch / Arrive / Resolve| AgencyPanel[Agency Portal Terminal]
-    AgencyPanel -->|Updates Live Lifecycle| Backend
-    Backend -->|Live Dynamic Push| CivilianTracker[Civilian Real-Time Tracking Screen]
-```
+    AgencyCommander([Rescue Agency Commander]) -->|Accept / Code 3 / On-Scene| AgencyPortal[Agency Terminal]
+    AgencyPortal -->|Lifecycle State Changes| StateBus
+    StateBus -->|Live Dynamic Push| CivilianTracker[Civilian Real-Time Tracker]
 
-When an emergency occurs:
-1. **SOS Received**: The civilian presses SOS and types what happened (or selects a quick prompt) and pinpoints their location via GPS or map pin.
-2. **AI Triage**: The hybrid AI engine evaluates life-safety signals (`unconscious`, `severe bleeding`, `trapped`, `fire`, `flood`) to produce urgency (`CRITICAL`, `HIGH`, `NORMAL`), priority score (`0-100`), confidence %, and tactical guidance.
-3. **Fleet Matching**: The algorithm scores nearby agencies based on distance, station status (`ACTIVE`, `STANDBY`), ready units, and emergency specialization.
-4. **Hazard-Aware Routing**: The system calculates the fastest street route using OSRM, checks for active flood/fire/debris hazard polygons, and generates a **Safe Bypass Route** if required.
-5. **Live Dispatch & Civilian Peace of Mind**: The command center dispatches the unit; both the agency terminal and civilian tracking screen update in real time with synchronized ETAs and sirens.
 
----
 
-## ✨ Key Features
-
-- **Civilian SOS Module (`/sos`)**:
-  - Intuitive emergency categorization (Medical, Fire, Accident, Flood, Collapse, Threat, Missing).
-  - Real-time live AI preview as the user types.
-  - Casualty stepper and high-accuracy browser Geolocation / Map-pin picker.
-- **AI Triage & Decision Support**:
-  - **Layer 1**: Deterministic rule-based NLP classification matrix with zero-crash guarantee.
-  - **Layer 2**: Configurable Gemini 1.5 Flash generative AI API integration via `.env`.
-- **Live Command Center (`/command-center`)**:
-  - Dark-mode tactical dashboard with high-contrast emergency semantic colors.
-  - Real-time KPI Ribbon: Active SOS, Critical Incidents, Available Stations, Deployed Units, Avg ETA.
-  - Interactive Leaflet map with custom SVG pulsing markers, agency fleet icons, and hazard overlays.
-  - Search and instant filtering by priority, status, and category.
-  - Transparent AI agency recommendation drawer with explicit score breakdowns.
-- **Hazard-Aware Routing Engine**:
-  - Live OpenStreetMap routing via project-osrm.org API with street-curve geometry fallback.
-  - Mathematical polygon collision detection against simulated flood and fire zones.
-  - Compare "Direct/Fastest" vs. "Safest Hazard-Avoidance" route polylines.
-- **Agency Terminal (`/agency`)**:
-  - Station commander dispatch queue to accept, dispatch (Code 3), mark on-scene, and resolve.
-- **Civilian Live Tracking (`/track/:id`)**:
-  - Visual 6-step progress stepper, dynamic ETA countdown, assigned agency telephone link, and category-specific safety guidance.
-- **60-Second Automated Live Demo Simulator**:
-  - One-click scenario runner (Medical Crash, Tower Fire, Flash Flood) that drives the full lifecycle from SOS to resolution in 60 seconds with play, pause, and reset controls.
-- **Synthesized Audio Alerts**:
-  - In-app dual-tone emergency alarm, dispatch chimes, and resolution celebration using the Web Audio API (no external mp3 files required).
-- **Presentation Mode**:
-  - Clean distraction-free fullscreen mode designed specifically for hackathon judges and screen recordings.
-- **Dual-Mode Backend**:
-  - Connects to Google Cloud Firestore when configured, or transparently falls back to an in-memory + BroadcastChannel reactive bus so anyone can clone and demo without setting up a database first!
-
----
-
-## 🛠️ Technology Stack
-
-| Layer | Technology |
-|---|---|
-| **Frontend Framework** | React 18, Vite 6 |
-| **Styling & Design** | Tailwind CSS 3.4, Lucide React Icons |
-| **Geospatial & Maps** | Leaflet 1.9, CartoDB Dark Matter / OpenStreetMap tiles |
-| **Routing** | OSRM (Open Source Routing Machine) API + Geodesic Street Fallback |
-| **Backend & Sync** | Cloud Firestore + Local Cross-Tab BroadcastChannel Reactive Bus |
-| **Artificial Intelligence** | Gemini 1.5 Flash API (Layer 2) + Deterministic NLP Matrix (Layer 1) |
-| **Audio Synthesis** | Web Audio API Oscillator & Gain Nodes |
-| **Visual Effects** | Canvas Confetti, CSS Pulse & Beacon Keyframes |
-
----
-
-## 🚀 Quickstart & Installation
-
-### 1. Clone & Install Dependencies
-```bash
-git clone https://github.com/your-username/resq-ai.git
-cd resq-ai
+    The 4-Step LifecycleInstant SOS Beacon: The user triggers an alert via text, voice prompt, or pre-configured emergency chips, capturing precise GPS coordinates.Dual-Layer AI Triage: A deterministic rule engine backed by Gemini 1.5 Flash parses the prompt for life-threat indicators (e.g., unconscious, severe trauma, entrapment) and assigns an Urgency Class (CRITICAL, HIGH, MODERATE) and a 0–100 Priority Score.Multi-Factor Dispatch Matching: The engine scores available stations by proximity, vehicle readiness, and operational specialization.Hazard-Bypass Routing: Integrated OSRM pathing cross-references simulated hazard polygons (flood zones, structure collapses) to compute the safest possible route rather than blindly following the shortest line.🛠️ Engineering & Tech StackLayerTechnologiesFrontend CoreReact 18, Vite 6, Tailwind CSS 3.4, Lucide IconsGeospatial & MappingLeaflet 1.9, CartoDB Dark Matter, OpenStreetMap TilesRouting & NavigationOSRM (Open Source Routing Machine) API + Geodesic FallbackBackend & StateGoogle Cloud Firestore + Zero-Config Cross-Tab BroadcastChannel BusAI IntelligenceGemini 1.5 Flash API + Deterministic NLP MatrixReal-Time AudioNative Web Audio API (Synthesized tone alarms, zero external assets)✨ Core Features1. Civilian SOS Portal (/sos)Real-time triage analysis that previews severity as the user types.Casualty counter, situational quick-select chips, and high-accuracy browser geolocation.Direct link to live status tracking without account registration.2. Live Command Center (/command-center)High-contrast tactical UI engineered for high-stress dispatch environments.KPI Ribbon: Real-time metrics tracking active incidents, deployable fleets, critical cases, and average response times.Interactive Radar: Leaflet mapping with pulsing SVG markers, station pins, and hazard overlays.Transparent agency recommendation drawer displaying calculated match scores.3. Hazard-Aware Safe RoutingEvaluates street-level vectors against active environmental hazards.Mathematical polygon collision detection triggers instant recalculation around flash floods and structural collapses.Side-by-side visualization of Direct vs. Hazard-Bypass routes.4. Zero-Setup Demo ArchitectureRuns out-of-the-box in local reactive mode via BroadcastChannel synchronization—no database setup required for evaluators.60-Second Simulator: A single click runs an automated end-to-end incident lifecycle (Reporting $\rightarrow$ Triage $\rightarrow$ Dispatch $\rightarrow$ Resolution).🚀 Quickstart & Setup1. Clone & InstallBashgit clone [https://github.com/rgokulgokul2007-lgtm/hacknowa26-ralca.git](https://github.com/rgokulgokul2007-lgtm/hacknowa26-ralca.git)
+cd hacknowa26-ralca
 npm install
-```
-
-### 2. Configure Environment (Optional)
-The application is pre-configured with **Zero-Setup Mode**: it runs out-of-the-box in local reactive mode with realistic demo agencies and incidents even if no environment variables are provided.
-
-To enable live Google Cloud Firestore or Gemini AI, create a `.env` file from the template:
-```bash
-cp .env.example .env
-```
-Fill in your credentials:
-```env
-# Cloud Firestore (Optional)
+2. Configure Environment (Optional)The project is built with Zero-Setup Mode: it defaults to local reactive data with simulated stations out of the box.To enable live Google Cloud Firestore or Gemini API integration, create a .env file:Bashcp .env.example .env
+Code snippet# Cloud Firestore (Optional)
 VITE_FIREBASE_API_KEY=your_firebase_api_key
 VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
 VITE_FIREBASE_PROJECT_ID=your_project_id
-VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-VITE_FIREBASE_APP_ID=your_app_id
 
 # Gemini API Key (Optional)
 VITE_GEMINI_API_KEY=your_gemini_api_key
-```
-
-### 3. Start Development Server
-```bash
-npm run dev
-```
-Open your browser at `http://localhost:3000`.
-
----
-
-## 🧪 Recommended 3-Minute Hackathon Demonstration Flow
-
-For judges watching a live walkthrough:
-
-1. **Start on the Landing Page (`/`)**:
-   - Highlight the live metrics bar and the 4-step emergency lifecycle.
-2. **Trigger SOS (`/sos`)**:
-   - Click one of the quick chips: *"Road collision between two cars. 2 people injured and one person is unconscious."*
-   - Observe the **Live AI Preview** instantly categorize as `Medical Emergency` with `CRITICAL` urgency.
-   - Click **TRANSMIT EMERGENCY SOS NOW**.
-3. **Observe Civilian Tracking (`/track/:id`)**:
-   - Notice the status is `SOS RECEIVED` with live safety tips.
-4. **Open Command Center (`/command-center`) in a Second Tab**:
-   - Verify the incident appeared **instantly in real time** without refreshing.
-   - Inspect the **KPI Ribbon** incrementing.
-   - See the pulsing red marker on the **Live Map**.
-5. **Inspect AI Agency Match & Routing**:
-   - Click on the incident in the queue.
-   - Observe the **AI-Optimized Match** recommending the nearest active medical unit with transparent score metrics.
-   - Click **DISPATCH AGENCY**.
-   - Notice the **Leaflet Map** draw the green safe route line avoiding simulated hazard zones.
-6. **Verify Cross-Tab Sync**:
-   - Switch back to the Civilian Tracking tab: observe the stepper has progressed to `ASSIGNED` and `DISPATCHED` with calculated ETA and station contact!
-7. **One-Click Live Demo**:
-   - Back in Command Center, click **START DEMO** in the top ribbon to watch the 60-second automated emergency simulation.
-
----
-
-## 🛡️ Hackathon Disclaimer
-
-*RALCA is a decision-support prototype created for Hack Devengers 2.0. All hazard zones, agency stations, and casualty events displayed in demo mode are synthetic simulated data. The system is designed to augment and assist emergency coordinators, not replace official certified municipal dispatch networks without formal integration.*
+3. Run LocallyBashnpm run dev
+Open http://localhost:3000 (or the port displayed in your terminal) in your browser.🧪 Evaluator Walkthrough (3-Minute Tour)Trigger an Alert (/sos): Click the quick-chip: "Road collision between two cars. 2 people injured and one person is unconscious." Observe the live NLP engine flag the event as CRITICAL in real time. Click Transmit Emergency SOS.Observe Civilian View (/track/:id): The civilian view transitions to an active progress tracker with situational safety instructions and calculated ETAs.Open Command Center (/command-center) in a Second Tab: Notice the incident appears instantly across tabs without page reloads. The tactical radar plots the pulsing red beacon.Inspect Agency Recommendation: Click the incident card. Review the multi-factor match score and select Dispatch Agency.Inspect the Hazard Bypass: Watch the Leaflet engine plot a navigation path that automatically circumnavigates active hazard zones.Cross-Tab Synchronization: Return to the Civilian Tracker tab to confirm status updates to DISPATCHED with active unit telemetry.🛡️ Hackathon DisclaimerRALCA-AI is a prototype decision-support framework engineered for the HackNowa Global Hackathon 2026. All agency stations, incident streams, and hazard overlays utilized in demo mode are synthetic simulations designed to showcase technical capabilities and UI/UX flows.
