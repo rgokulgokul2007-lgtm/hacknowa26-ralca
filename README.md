@@ -1,6 +1,8 @@
 🚨 RESQ AI: Next-Gen Emergency Dispatch & Hazard-Aware Coordination
 HackNowa Global Hackathon 2026 | Track: AI for Everyday Life
 Live Demo: https://chimerical-pavlova-5c3493.netlify.app/
+
+
 Demo Video: https://drive.google.com/file/d/1rDUJDflSiCdU2cgAMTE-W8FeN9jwqiqh/view?usp=drivesdk
 
 
