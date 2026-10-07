@@ -2,9 +2,12 @@
 
 HackNowa Global Hackathon 2026 | Track: AI for Everyday Life
 Live Demo: https://chimerical-pavlova-5c3493.netlify.app/
+
+
 Demo Video: https://drive.google.com/file/d/1rDUJDflSiCdU2cgAMTE-W8FeN9jwqiqh/view?usp=drivesdk
 
 The Reality of Emergency Response
+
 Traditional municipal dispatch systems (911 / 112 / 108) were built for voice calls, not dynamic crisis telemetry. During catastrophic events, dispatch centers face critical bottlenecks like panicked callers struggling to describe locations, dispatchers spending minutes interrogating callers to determine vehicle requirements, and medical or fire units operating on separate fragmented dashboards. Furthermore, standard GPS routes emergency units directly toward secondary hazards like floods or debris fields. RESQ AI unifies distressed civilians, AI triage agents, and field commanders on a single reactive pipeline to solve this.
 
 System Architecture & The 4-Step Lifecycle
@@ -64,8 +67,9 @@ Step 4: Click the incident card, review the multi-factor match score, and select
 Step 5: Watch the Leaflet engine plot a navigation path that automatically circumnavigates active hazard zones. Return to the Civilian Tracker tab to confirm the status has updated to DISPATCHED with active unit telemetry.
 
 Author
+
 Gokul R
 Submitted for the HackNowa Global Hackathon 2026 (AI for Everyday Life Track)
 
-Hackathon Disclaimer
+
 RESQ AI is a prototype decision-support framework engineered for the HackNowa Global Hackathon 2026. All agency stations, incident streams, and hazard overlays utilized in demo mode are synthetic simulations designed to showcase technical capabilities and UI/UX flows.
